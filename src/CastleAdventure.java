@@ -5,27 +5,75 @@ public class CastleAdventure {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Нижче перша частина завдання для прикладу
-        // Там де в завданні вказані початкові дані у вигляді масиву - ініціалізуйте окремий масив
-        // Нижче обробляйте масив, додайте логіку обробки
-        // Частина 1: Увійди в Замок
-        int[] secretCode = {7, 14, 28, 56, 112};
-        System.out.println("Введіть 5 чисел, щоб відкрити двері замку:");
-        boolean isCodeCorrect = true;
+        int[] secretCode = {3, 14, 159, 26, 535};
+        while (true) {
+            System.out.println("Введіть 5 чисел, щоб відкрити двері замку:");
+            boolean isCodeCorrect = true;
 
-        for (int i = 0; i < secretCode.length; i++) {
-            int userInput = scanner.nextInt(); // питаємо в користувача чергове число
-            if (userInput != secretCode[i]) { // перевіряємо число проти i-го елемента масиву з правильним кодом
-                isCodeCorrect = false; // якщо натрапляємо на неправильно введене число - усю комбінацію вважаємо невірною
+            for (int i = 0; i < secretCode.length; i++) {
+                int userInput = scanner.nextInt();
+                if (userInput != secretCode[i]) {
+                    isCodeCorrect = false;
+                }
+            }
+            if (isCodeCorrect) {
+                System.out.println("Замок відкрито! Заходьте всередину.");
+                System.out.println("Потрапивши у замок, ти бачиш чарівну дошку з числами.");
+                break;
+            } else {
+                System.out.println("Невірний код. Спробуйте ще.");
             }
         }
+        int[] sumNumbers = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30};
+        while (true) {
+            System.out.println("Введіть 10 магічних чисел з дошки по черзі:");
+            boolean correct = true;
 
-        if (isCodeCorrect) {
-            System.out.println("Замок відкрито! Заходьте всередину.");
-        } else {
-            System.out.println("Невірний код. Спробуйте ще.");
+            for (int i = 0; i < sumNumbers.length; i++) {
+                int userInput = scanner.nextInt();
+                if (userInput != sumNumbers[i]) {
+                    correct = false;
+                }
+            }
+
+            if (correct) {
+                System.out.println("Двері відкриті! Заходьте.");
+                break;
+            } else {
+                System.out.println("Невірна послідовність. Спробуй ще.");
+            }
         }
+        int[] codeAttack = {8, 16, 24, 32, 40};
+        boolean allEven = true;
+        System.out.println("Ти зустрів Залізного дракона!");
+        System.out.println("Тобі потрібно передбачити його атаку!");
 
-        // Інші частини пригоди додайте тут!
+        for (int attack : codeAttack) {
+            if (attack % 2 != 0) {
+                allEven = false;
+                break;
+            }
+        }
+        if (allEven) {
+            System.out.println("Атаки парні! Захист активовано!");
+        } else {
+            System.out.println("Увага! Непарна атака!");
+        }
+        System.out.print("Введіть улюблене число: ");
+        int favoriteNumber = scanner.nextInt();
+
+        int[][] allArrays = {secretCode, sumNumbers, codeAttack};
+        boolean found = false;
+
+        for (int[] array : allArrays) {
+            for (int num : array) {
+                if (num == favoriteNumber) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+        System.out.println(found ? "Твій ключ знайдено!" : "Треба більше магії...");
     }
 }
